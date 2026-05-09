@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RE:TRADE NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="login-screen">
+        <div class="login-card">
+            <h1 class="logo">RE:<span>TRADE</span></h1>
+            <input type="text" id="profile-link" placeholder="Roblox Profile URL">
+            <button id="login-btn">ENTER NEXUS</button>
+        </div>
+    </section>
+
+    <div id="app-shell" class="hidden">
+        <header class="main-header">
+            <div class="user-info">
+                <div class="pfp-ring"><img id="pfp-img" src=""></div>
+                <div class="user-txt"><h2 id="pfp-name">Trader</h2><span class="status-dot">Live</span></div>
+            </div>
+        </header>
+
+        <nav class="tab-bar">
+            <button class="tab-btn active" data-tab="market">MARKET</button>
+            <button class="tab-btn" data-tab="post">BUILDER</button>
+            <button class="tab-btn" data-tab="inbox">INBOX <span id="notif-badge" class="hidden">0</span></button>
+        </nav>
+
+        <main class="app-content">
+            <section id="view-market" class="pane"><div id="trade-feed-container"></div></section>
+            
+            <section id="view-post" class="pane hidden">
+                <div class="builder-card">
+                    <div id="give-display">Nothing Selected</div>
+                    <div id="fruit-picker-grid" class="fruit-grid"></div>
+                    <button class="broadcast-btn" onclick="window.broadcastTrade()">BROADCAST OFFER</button>
+                </div>
+            </section>
+
+            <section id="view-inbox" class="pane hidden"><div id="inbox-list"></div></section>
+        </main>
+
+        <div id="counter-modal" class="hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>SELECT YOUR OFFER</h3>
+                    <button onclick="window.closeCounterModal()">×</button>
+                </div>
+                <div id="counter-display">Nothing Selected</div>
+                <div id="counter-picker-grid" class="fruit-grid"></div>
+                <button class="broadcast-btn" onclick="window.submitCounterOffer()">SEND COUNTER OFFER</button>
+            </div>
+        </div>
+
+        <div id="chat-overlay" class="hidden">
+            <div class="chat-container">
+                <div class="chat-header"><span id="chat-target">User</span><button onclick="window.closeChat()">×</button></div>
+                <div id="chat-messages"></div>
+                <div class="chat-footer">
+                    <input type="text" id="msg-input" placeholder="Message...">
+                    <button id="chat-send-btn">SEND</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
