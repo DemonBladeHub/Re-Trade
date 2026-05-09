@@ -27,7 +27,7 @@ html, body {
     padding: 0;
     background: var(--bg);
     color: white;
-    overflow: hidden; /* Lock the screen */
+    overflow: hidden; 
     position: fixed; 
 }
 
@@ -121,6 +121,15 @@ html, body {
     gap: 10px; padding: 15px; 
 }
 
+/* SCROLLING FIX FOR THE MODAL GRID */
+#counter-picker-grid {
+    flex: 1;
+    overflow-y: auto !important; /* Enable scrolling */
+    max-height: 400px; /* Limits height so buttons stay visible */
+    padding: 15px;
+    -webkit-overflow-scrolling: touch;
+}
+
 .fruit-item {
     background: #111;
     border: 1px solid var(--border);
@@ -131,16 +140,15 @@ html, body {
 }
 
 .fruit-item:active { transform: scale(0.9); }
-
-.fruit-item img { width: 42px; height: 42px; margin-bottom: 4px; }
+.fruit-item img { width: 42px; height: 42px; margin-bottom: 4px; object-fit: contain; }
 .fruit-item span { display: block; font-size: 9px; font-weight: 700; }
 
 /* Rarity Glows */
-.mythic { border-color: var(--mythic) !important; background: linear-gradient(145deg, #2a0a0a, #000) !important; }
-.legend { border-color: var(--legend) !important; background: linear-gradient(145deg, #1a0a2a, #000) !important; }
-.rare { border-color: var(--rare) !important; background: linear-gradient(145deg, #0a0e2a, #000) !important; }
-.uncommon { border-color: var(--uncommon) !important; }
-.common { border-color: var(--common) !important; }
+.mythic { border: 2px solid var(--mythic) !important; background: linear-gradient(145deg, #2a0a0a, #000) !important; }
+.legend { border: 2px solid var(--legend) !important; background: linear-gradient(145deg, #1a0a2a, #000) !important; }
+.rare { border: 2px solid var(--rare) !important; background: linear-gradient(145deg, #0a0e2a, #000) !important; }
+.uncommon { border: 2px solid var(--uncommon) !important; }
+.common { border: 2px solid var(--common) !important; }
 
 /* 5. CARDS (MARKET & INBOX) */
 .trade-card, .inbox-card {
@@ -153,7 +161,6 @@ html, body {
 
 .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .card-header img { width: 30px; height: 30px; border-radius: 50%; }
-
 .highlight { color: var(--uncommon); font-weight: 800; }
 
 .offer-btn, .broadcast-btn {
@@ -172,8 +179,14 @@ html, body {
 }
 
 .modal-content, .chat-container {
-    width: 95%; height: 88vh; background: #0f0f13; border-radius: 25px;
-    display: flex; flex-direction: column; border: 1px solid #333; overflow: hidden;
+    width: 95%; 
+    max-height: 90vh; /* Prevents modal from leaving screen */
+    background: #0f0f13; 
+    border-radius: 25px;
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid #333; 
+    overflow: hidden;
 }
 
 .modal-header, .chat-header {
